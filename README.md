@@ -14,6 +14,9 @@ Various applications (e.g., a payment system) can be built upon these lower-leve
 
 The implementation must take into account that **messages** exchanged between processes **may be dropped, delayed or reordered by the network**. The execution of processes may be paused for an arbitrary amount of time and resumed later. Processes may also fail by crashing at arbitrary points of their execution.
 
+# Personal resources 
+[CS-451 Blog](https://kjaer.io/distributed-algorithms)
+
 # Project Requirements
 
 ## Basics
