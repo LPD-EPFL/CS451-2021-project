@@ -1,10 +1,19 @@
 #include <chrono>
 #include <iostream>
 #include <thread>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <strings.h>
+#include <netdb.h>
+#include <stdio.h>
 
 #include "parser.hpp"
 #include "hello.h"
 #include <signal.h>
+
+#include "sender.h"
+#include "receiver.h"
 
 
 static void stop(int) {
@@ -65,13 +74,43 @@ int main(int argc, char **argv) {
 
   std::cout << "Doing some initialization...\n\n";
 
+  // TODO
+  // IMPLEMENT PERFECT LINK
+
+  auto host1 = hosts[0];
+  auto host2 = hosts[1];
+
+  if (parser.id() == 1){
+
+    Sender sender1(host1.ip, host1.port);
+
+    char message = 'p';
+
+    ssize_t check = sender1.send(message, host2.ip, host2.port);
+
+    if (check >0){
+      std::cout << "message sent \n";
+    }
+
+  }
+
+  if (parser.id() == 2){
+
+    Receiver test2(host2.ip, host2.port);
+
+    ssize_t check = -1;
+
+    check = test2.receive();
+  }
+  
   std::cout << "Broadcasting and delivering messages...\n\n";
 
   // After a process finishes broadcasting,
   // it waits forever for the delivery of messages.
+  /*
   while (true) {
     std::this_thread::sleep_for(std::chrono::hours(1));
-  }
+  }*/
 
   return 0;
 }

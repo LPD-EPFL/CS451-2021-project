@@ -15,7 +15,7 @@ class Sender {
 
     ~Sender();
 
-    ssize_t send(char msg, in_addr_t to_ip, unsigned short to_port);
+    ssize_t send(const char &msg, in_addr_t to_ip, unsigned short to_port);
 
 
     private:
