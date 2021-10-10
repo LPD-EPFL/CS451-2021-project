@@ -300,3 +300,7 @@ However, we provide a sample validation script for the FIFO broacast (`tools/val
 **9. Is ok that the processes terminate before they are able to deliver all the messages?**
 
 Yes, as soon as you receive a SIGTERM signal, you need to terminate the process and start writing to the logs. You may not have delivered all the messages by that time which is ok. You should only deliver the message that you can deliver. i.e., that does not violate FIFO and URB. If instead you do, while you are not allowed to, you may be violating correctness.
+
+**10. Which files can I modify in the template?**
+
+In general, you can add whatever you want to ANY file in the template that is NOT marked with DO NOT EDIT. Also, you are NOT allowed to change the function signatures nor the file names. Other than that (like including adding a parser, adding some code in the main, create new classes, adding new functions, adding constants, ...etc.) is allowed.
